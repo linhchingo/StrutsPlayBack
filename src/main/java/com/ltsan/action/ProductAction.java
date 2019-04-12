@@ -14,11 +14,7 @@ public class ProductAction extends MappingDispatchAction {
 
 
 	public ActionForward addProduct(ActionMapping mapping, ActionForm form, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
-		Product product = (Product) form;
-		
-		product.setName("iphone");
-		product.setQuantity(25);
+			HttpServletResponse response) throws Exception {	
 		
 		return mapping.findForward("addProduct");
 	}
@@ -52,5 +48,6 @@ public class ProductAction extends MappingDispatchAction {
 //		product.setQuantity(quantity);
 		
 		return mapping.findForward("viewProduct");
+		
 	}
 }

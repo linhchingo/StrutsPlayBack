@@ -14,5 +14,18 @@
 	<h2>
 		<b:write name="product" property="quantity" format="#####" />
 	</h2>
+	<h2>
+		<b:write name="product" property="sex"  />
+	</h2>
+	<h2>
+		<b:write name="product" property="feature"  />
+	</h2>
+	<h2>
+		<b:write name="product" property="type"  />
+	</h2>
+	<h2>
+		<b:write name="product" property="supplier"  />
+	</h2>
+
 </body>
 </html>
