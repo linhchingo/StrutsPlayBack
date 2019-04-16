@@ -8,6 +8,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.MappingDispatchAction;
 
+import com.ltsan.dao.ProductDao;
 import com.ltsan.model.Product;
 
 public class ProductAction extends MappingDispatchAction {
@@ -20,19 +21,13 @@ public class ProductAction extends MappingDispatchAction {
 	}
 	public ActionForward delProduct(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		Product product = (Product) form;
 		
-		product.setName("iphone");
-		product.setQuantity(25);
 		
 		return mapping.findForward("delProduct");
 	}
 	public ActionForward updateProduct(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		Product product = (Product) form;
 		
-		product.setName("iphone");
-		product.setQuantity(25);
 		
 		return mapping.findForward("updateProduct");
 	}
@@ -46,6 +41,14 @@ public class ProductAction extends MappingDispatchAction {
 //		
 //		product.setName(name);
 //		product.setQuantity(quantity);
+		
+		int id = Integer.valueOf(request.getParameter("productId")) ;
+		
+		ProductDao productDao = new ProductDao();
+		Product product = productDao.getProductById(id);
+		
+		
+		request.setAttribute("product", product);
 		
 		return mapping.findForward("viewProduct");
 		

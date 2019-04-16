@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h1>
-		<b:write name="product" property="name" />
+		<b:write name="product" property="name" scope="request"/>
 	</h1>
 	<h2>
 		<b:write name="product" property="quantity" format="#####" />

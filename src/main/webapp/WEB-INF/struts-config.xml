@@ -35,7 +35,7 @@
 		</action>
 		
 		<action path="/view-Product" type="com.ltsan.action.ProductAction"
-			name="product" parameter="viewProduct" validate="true" input="/product/addProduct.jsp">
+			 parameter="viewProduct">
 			<forward name="viewProduct" path="/product/viewProduct.jsp"></forward>
 		</action>
 		
