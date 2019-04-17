@@ -1,5 +1,7 @@
 package com.ltsan.action;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -8,8 +10,8 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.MappingDispatchAction;
 
-import com.ltsan.dao.ProductDao;
 import com.ltsan.model.Product;
+import com.ltsan.service.ProductService;
 
 public class ProductAction extends MappingDispatchAction {
 
@@ -33,6 +35,7 @@ public class ProductAction extends MappingDispatchAction {
 	}
 	public ActionForward viewProduct(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
+		
 //		Product product = (Product) form;
 //		
 //		String name = request.getParameter("name");
@@ -44,13 +47,24 @@ public class ProductAction extends MappingDispatchAction {
 		
 		int id = Integer.valueOf(request.getParameter("productId")) ;
 		
-		ProductDao productDao = new ProductDao();
-		Product product = productDao.getProductById(id);
+		ProductService productService = new  ProductService();
+		Product product = productService.findProductById(id);
 		
 		
 		request.setAttribute("product", product);
 		
 		return mapping.findForward("viewProduct");
 		
+	}
+	
+	public ActionForward listProduct(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		
+		ProductService productService = new ProductService();
+		List<Product> products = productService.getProducts();
+		
+		request.setAttribute("products", products);
+		
+		return mapping.findForward("listProduct");
 	}
 }

@@ -44,6 +44,10 @@
 		<input type="submit" value="View Product" />
 	</form>
 	
+	<form action="list-Product.do" method="post">
+		<input type="submit" value="List Product" />
+	</form>
+	
 
 
 
